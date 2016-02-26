@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Анкета</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="pages">
+                <input type="button" id="page1" value="1">
+                <input type="button" id="page2" value="2">
+                <input type="button" id="page3" value="3">
+                <input type="button" id="page4" value="4">
+            </div>
+            <div class="content-wrapper">
+                <div class="content">
+                    <input id="inp-name" type="text" name="fullName" placeholder="Name">
+                    <input id="inp-mail" type="text" name="email" placeholder="E-mail" >
+                </div>
+                <div class="content">
+                    <select id="country">
+
+                    </select>
+                    <select id="city">
+
+                    </select>
+                </div>
+                <div class="content"></div>
+                <div class="content"></div>
+            </div>
+            <div class="navigation">
+                <input type="button" id="prev" value="Prev">
+                <input type="button" id="next" value="Next">
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script>
+            function validate() {
+                var mail = document.getElementById('inp-mail').value;
+                var parts = mail.split('@');
+                if (parts.length != 2) {
+                    return false;
+                } else {
+                    var dot = parts[1].split('.');
+                    return dot.length == 2;
+                }
+            }
+
+            $(document).ready(function() {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: 'countries.json',
+                    success: function(response) {
+                        for (var record in response) {
+                            $('#country').append('<option value="' + record + '">' + response[record] + '</option>')
+                        }
+                    }
+                });
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: 'cities.json',
+                    success: function(response) {
+                        var sel = $('#country').val();
+                        for (var record in response) {
+                            if (sel == response[record]['country']) {
+                                $('#city').append('<option value="' + record + '">' + response[record]['name'] + '</option>');
+                            }
+                        }
+                    }
+                });
+            });
+
+            $('#country').change(function() {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: 'cities.json',
+                    success: function(response) {
+                        $('#city').empty();
+                        var sel = $('#country').val();
+                        for (var record in response) {
+                            if (sel == response[record]['country']) {
+                                $('#city').append('<option value="' + record + '">' + response[record]['name'] + '</option>');
+                            }
+                        }
+                    }
+                });
+            });
+
+            $('#prev, #next').click(function () {
+                if (validate()) {
+                    alert('yeap');
+                } else {
+                    alert('nope');
+                }
+            });
+
+            for (var i = 1; i <= 4; i++) {
+                $('#page' + i).click(function() {
+                    alert(this.id);
+                });
+            }
+        </script>
+    </body>
+</html>
