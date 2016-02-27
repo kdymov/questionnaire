@@ -4,7 +4,9 @@
         <meta charset="UTF-8">
         <title>Анкета</title>
         <style>
-
+            .link-input {
+                visibility: hidden;
+            }
         </style>
     </head>
     <body>
@@ -21,14 +23,15 @@
                     <input id="inp-mail" type="text" name="email" placeholder="E-mail" >
                 </div>
                 <div class="content">
-                    <select id="country">
-
-                    </select>
-                    <select id="city">
-
-                    </select>
+                    <select id="country"></select>
+                    <select id="city"></select>
                 </div>
-                <div class="content"></div>
+                <div class="content">
+                    <input type="checkbox" class="check-social"> Facebook <input class="link-input" type="text" name="fb" placeholder="Facebook link"><br>
+                    <input type="checkbox" class="check-social"> Twitter <input class="link-input" type="text" name="tw" placeholder="Twitter link"><br>
+                    <input type="checkbox" class="check-social"> VK <input class="link-input" type="text" name="vk" placeholder="VK link"><br>
+                    <input type="checkbox" class="check-social"> Odnoklassniki <input class="link-input" type="text" name="ok" placeholder="Odnoklassniki link">
+                </div>
                 <div class="content"></div>
             </div>
             <div class="navigation">
@@ -98,6 +101,10 @@
                 } else {
                     alert('nope');
                 }
+            });
+
+            $('.check-social').click(function() {
+                $(this).next().toggleClass('link-input');
             });
 
             for (var i = 1; i <= 4; i++) {
