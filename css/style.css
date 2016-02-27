@@ -11,7 +11,7 @@ img {
 }
 
 .input-error {
-    border: 1px solid rgba(207, 0, 0, 0.94);
+    border: 2px solid rgba(207, 0, 0, 0.94);
 }
 
 .content {
@@ -25,4 +25,16 @@ img {
 
 .content:not(.sel) {
     visibility: hidden;
+}
+
+.results {
+    visibility: hidden;
+}
+
+#end {
+    visibility: hidden;
+}
+
+.error{
+    color: rgba(207, 0, 0, 0.94);
 }

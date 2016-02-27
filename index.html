@@ -25,25 +25,34 @@
                         <select id="city"></select>
                     </div>
                     <div class="content">
-                        <input type="checkbox" class="check-social"> Facebook <input class="link-input" type="text" name="fb" placeholder="Facebook link"><br>
-                        <input type="checkbox" class="check-social"> Twitter <input class="link-input" type="text" name="tw" placeholder="Twitter link"><br>
-                        <input type="checkbox" class="check-social"> VK <input class="link-input" type="text" name="vk" placeholder="VK link"><br>
-                        <input type="checkbox" class="check-social"> Odnoklassniki <input class="link-input" type="text" name="ok" placeholder="Odnoklassniki link">
+                        <input type="checkbox" class="check-social" id="fb"> Facebook <input class="link-input fb" type="text" name="fb" placeholder="Facebook link"><br>
+                        <input type="checkbox" class="check-social" id="tw"> Twitter <input class="link-input tw" type="text" name="tw" placeholder="Twitter link"><br>
+                        <input type="checkbox" class="check-social" id="vk"> VK <input class="link-input vk" type="text" name="vk" placeholder="VK link"><br>
+                        <input type="checkbox" class="check-social" id="ok"> Odnoklassniki <input class="link-input ok" type="text" name="ok" placeholder="Odnoklassniki link">
+                        <p class="error" id="socialpg"></p>
                     </div>
                     <div class="content">
-                        <img class="cat" src="img/cat1.jpg" alt="cat">
-                        <img class="cat" src="img/cat2.jpg" alt="cat">
-                        <img class="cat" src="img/cat3.jpg" alt="cat">
-                        <img class="dog" src="img/dog4.jpg" alt="dog">
+                        <img id="pic1" class="cat" src="img/cat1.jpg" alt="cat">
+                        <img id="pic2" class="cat" src="img/cat2.jpg" alt="cat">
+                        <img id="pic3" class="cat" src="img/cat3.jpg" alt="cat">
+                        <img id="pic4" class="dog" src="img/dog4.jpg" alt="dog">
                         <p id="pic" class="error"></p>
                     </div>
                 </div>
                 <div class="navigation">
                     <input type="button" id="prev" value="Prev">
                     <input type="button" id="next" value="Next">
+                    <input type="button" id="end" value="End">
                 </div>
             </div>
             <div class="results">
+                <p id="res-name"></p>
+                <p id="res-mail"></p>
+                <p id="res-country"></p>
+                <p id="res-city"></p>
+                <div class="res-social">
+
+                </div>
 
             </div>
         </div>
