@@ -90,11 +90,15 @@ $('#prev').click(function () {
     if (validate()) {
         var $curr = $('.content.sel');
         var $prev = $curr.prev();
+        var $currpt = $('.curr');
+        var $prevpt = $currpt.prev();
         $('#next').css('visibility', 'visible');
         $('#end').css('visibility', 'hidden');
         if ($prev.length != 0) {
             $curr.removeClass('sel');
             $prev.addClass('sel');
+            $currpt.removeClass('curr');
+            $prevpt.addClass('curr');
         }
     } else {
         if ($('#inp-name').val().length == 0) {
@@ -115,6 +119,12 @@ $('#next').click(function () {
         var $next = $curr.next();
         $curr.removeClass('sel');
         $next.addClass('sel');
+
+        var $currpt = $('.curr');
+        var $nextpt = $currpt.next();
+        $currpt.removeClass('curr');
+        $nextpt.addClass('curr');
+
         if ($('.sel+.content').length == 0) {
             $(btn).css('visibility', 'hidden');
             $('#end').css('visibility', 'visible');
@@ -134,7 +144,12 @@ $('#next').click(function () {
 
 $('#end').click(function() {
     if (validPicture) {
-        $('.questionnaire').css('visibility', 'hidden');
+        var $currpt = $('.curr');
+        $currpt.removeClass('curr');
+        var social = ['Facebook: ', 'Twitter: ', 'VK: ', 'Odnoklassniki: '];
+        var i = 0;
+
+        $('.questionnaire').css('visibility', 'hidden').height(0);
         $(this).css('visibility', 'hidden');
         $('.results').css('visibility', 'visible');
         $('#res-name').text('Name: ' + $('#inp-name').val());
@@ -143,15 +158,35 @@ $('#end').click(function() {
         $('#res-city').text('City: ' + $('#city').find('option:selected').text());
         $('.check-social').each(function() {
             var $inp = $(this).next();
-            $('.res-social').append('<p>' + $inp.val() + '</p>');
+            if ($inp.val().length != 0) {
+                $('.res-social').append('<p>' + social[i] + $inp.val() + '</p>');
+            }
+            i++;
         });
         if ($('#pic1').hasClass('active')) {
-            $('.results').append('<img src="img/cat1.jpg" alt="cat">');
+            $('.results').append('<div class="right"><img src="img/cat1.jpg" alt="cat"></div>');
         } else if ($('#pic2').hasClass('active')) {
-            $('.results').append('<img src="img/cat2.jpg" alt="cat">');
+            $('.results').append('<div class="right"><img src="img/cat2.jpg" alt="cat"></div>');
         } else if ($('#pic3').hasClass('active')) {
-            $('.results').append('<img src="img/cat3.jpg" alt="cat">');
+            $('.results').append('<div class="right"><img src="img/cat3.jpg" alt="cat"></div>');
         }
+        $('.results').append('<div class="clear"><input type="button" value="Пройти заново" id="start"></div>');
+        $('#start').click(function() {
+            $('.results').css('visibility', 'hidden');
+            $('.questionnaire').css('visibility', 'visible');
+            $('#next').css('visibility', 'visible');
+            var $first = $('.content').first();
+            $('.sel').removeClass('sel');
+            $first.addClass('sel');
+            $('.curr').removeClass('curr');
+            $('.pages > input').first().addClass('curr');
+            $('input:text').val('');
+            $('input:checkbox').removeAttr("checked");
+            $('.active').removeClass('active');
+            $('.right, .clear').remove();
+            $('.res-social').empty();
+            $('.check-social + input:text:not(.link-input)').toggleClass('link-input');
+        });
     }
 });
 
@@ -172,9 +207,3 @@ $('.dog').click(function() {
     $('#pic').text('Вы выбрали собачку. А надо котика');
     validPicture = false;
 });
-
-for (var i = 1; i <= 4; i++) {
-    $('#page' + i).click(function() {
-        alert(this.id);
-    });
-}

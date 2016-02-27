@@ -9,31 +9,35 @@
         <div class="wrapper">
             <div class="questionnaire">
                 <div class="pages">
-                    <input type="button" id="page1" value="1">
-                    <input type="button" id="page2" value="2">
-                    <input type="button" id="page3" value="3">
-                    <input type="button" id="page4" value="4">
+                    <input type="button" class="page curr" value="1">
+                    <input type="button" class="page" value="2">
+                    <input type="button" class="page" value="3">
+                    <input type="button" class="page" value="4">
                 </div>
                 <div class="content-wrapper">
                     <div class="content sel">
-                        <input id="inp-name" type="text" name="fullName" placeholder="Name">
-                        <input id="inp-mail" type="text" name="email" placeholder="E-mail" >
+                        <input id="inp-name" type="text" name="fullName" placeholder="Name"><br>
+                        <input id="inp-mail" type="text" name="email" placeholder="E-mail"><br>
                         <p class="error" id="firstpg"></p>
                     </div>
                     <div class="content">
-                        <select id="country"></select>
+                        <select id="country"></select><br>
                         <select id="city"></select>
                     </div>
                     <div class="content">
                         <input type="checkbox" class="check-social" id="fb"> Facebook <input class="link-input fb" type="text" name="fb" placeholder="Facebook link"><br>
+                        <div class="clear"></div>
                         <input type="checkbox" class="check-social" id="tw"> Twitter <input class="link-input tw" type="text" name="tw" placeholder="Twitter link"><br>
+                        <div class="clear"></div>
                         <input type="checkbox" class="check-social" id="vk"> VK <input class="link-input vk" type="text" name="vk" placeholder="VK link"><br>
+                        <div class="clear"></div>
                         <input type="checkbox" class="check-social" id="ok"> Odnoklassniki <input class="link-input ok" type="text" name="ok" placeholder="Odnoklassniki link">
+                        <div class="clear"></div>
                         <p class="error" id="socialpg"></p>
                     </div>
                     <div class="content">
                         <img id="pic1" class="cat" src="img/cat1.jpg" alt="cat">
-                        <img id="pic2" class="cat" src="img/cat2.jpg" alt="cat">
+                        <img id="pic2" class="cat" src="img/cat2.jpg" alt="cat"><br>
                         <img id="pic3" class="cat" src="img/cat3.jpg" alt="cat">
                         <img id="pic4" class="dog" src="img/dog4.jpg" alt="dog">
                         <p id="pic" class="error"></p>
@@ -46,14 +50,14 @@
                 </div>
             </div>
             <div class="results">
-                <p id="res-name"></p>
-                <p id="res-mail"></p>
-                <p id="res-country"></p>
-                <p id="res-city"></p>
-                <div class="res-social">
-
+                <div class="left">
+                    <p id="res-name"></p>
+                    <p id="res-mail"></p>
+                    <p id="res-country"></p>
+                    <p id="res-city"></p>
+                    <div class="res-social">
+                    </div>
                 </div>
-
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
