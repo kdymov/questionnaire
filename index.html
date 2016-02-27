@@ -3,19 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Анкета</title>
-        <style>
-            .link-input {
-                visibility: hidden;
-            }
-            img {
-                width: 150px;
-                height: 150px;
-                border: 5px solid white;
-            }
-            .active {
-                border: 5px solid orange;
-            }
-        </style>
+        <link href="css/style.css" type="text/css" rel="stylesheet">
     </head>
     <body>
         <div class="wrapper">
@@ -27,9 +15,10 @@
                     <input type="button" id="page4" value="4">
                 </div>
                 <div class="content-wrapper">
-                    <div class="content">
+                    <div class="content sel">
                         <input id="inp-name" type="text" name="fullName" placeholder="Name">
                         <input id="inp-mail" type="text" name="email" placeholder="E-mail" >
+                        <p class="error" id="firstpg"></p>
                     </div>
                     <div class="content">
                         <select id="country"></select>
@@ -46,6 +35,7 @@
                         <img class="cat" src="img/cat2.jpg" alt="cat">
                         <img class="cat" src="img/cat3.jpg" alt="cat">
                         <img class="dog" src="img/dog4.jpg" alt="dog">
+                        <p id="pic" class="error"></p>
                     </div>
                 </div>
                 <div class="navigation">
@@ -58,90 +48,6 @@
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-        <script>
-            function validate() {
-                var mail = document.getElementById('inp-mail').value;
-                var parts = mail.split('@');
-                if (parts.length != 2) {
-                    return false;
-                } else {
-                    var dot = parts[1].split('.');
-                    return dot.length == 2;
-                }
-            }
-
-            $(document).ready(function() {
-                $.ajax({
-                    type: 'POST',
-                    dataType: 'json',
-                    url: 'countries.json',
-                    success: function(response) {
-                        for (var record in response) {
-                            $('#country').append('<option value="' + record + '">' + response[record] + '</option>')
-                        }
-                    }
-                });
-                $.ajax({
-                    type: 'POST',
-                    dataType: 'json',
-                    url: 'cities.json',
-                    success: function(response) {
-                        var sel = $('#country').val();
-                        for (var record in response) {
-                            if (sel == response[record]['country']) {
-                                $('#city').append('<option value="' + record + '">' + response[record]['name'] + '</option>');
-                            }
-                        }
-                    }
-                });
-            });
-
-            $('#country').change(function() {
-                $.ajax({
-                    type: 'POST',
-                    dataType: 'json',
-                    url: 'cities.json',
-                    success: function(response) {
-                        $('#city').empty();
-                        var sel = $('#country').val();
-                        for (var record in response) {
-                            if (sel == response[record]['country']) {
-                                $('#city').append('<option value="' + record + '">' + response[record]['name'] + '</option>');
-                            }
-                        }
-                    }
-                });
-            });
-
-            $('#prev, #next').click(function () {
-                if (validate()) {
-                    alert('yeap');
-                } else {
-                    alert('nope');
-                }
-            });
-
-            $('.check-social').click(function() {
-                $(this).next().toggleClass('link-input');
-            });
-
-            $('.cat').click(function() {
-                $('.active').removeClass('active');
-                $(this).addClass('active');
-                alert('Yes!');
-            });
-
-            $('.dog').click(function() {
-                $('.active').removeClass('active');
-                $(this).addClass('active');
-                alert('No!');
-            });
-
-            for (var i = 1; i <= 4; i++) {
-                $('#page' + i).click(function() {
-                    alert(this.id);
-                });
-            }
-        </script>
+        <script src="js/main.js"></script>
     </body>
 </html>

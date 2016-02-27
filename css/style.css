@@ -1,0 +1,28 @@
+.link-input {
+    visibility: hidden;
+}
+img {
+    width: 150px;
+    height: 150px;
+    border: 5px solid white;
+}
+.active {
+    border: 5px solid orange;
+}
+
+.input-error {
+    border: 1px solid rgba(207, 0, 0, 0.94);
+}
+
+.content {
+    display: inline-block;
+    position: absolute;
+}
+
+.navigation {
+    margin-top: 200px;
+}
+
+.content:not(.sel) {
+    visibility: hidden;
+}
