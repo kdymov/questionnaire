@@ -7,36 +7,54 @@
             .link-input {
                 visibility: hidden;
             }
+            img {
+                width: 150px;
+                height: 150px;
+                border: 5px solid white;
+            }
+            .active {
+                border: 5px solid orange;
+            }
         </style>
     </head>
     <body>
         <div class="wrapper">
-            <div class="pages">
-                <input type="button" id="page1" value="1">
-                <input type="button" id="page2" value="2">
-                <input type="button" id="page3" value="3">
-                <input type="button" id="page4" value="4">
+            <div class="questionnaire">
+                <div class="pages">
+                    <input type="button" id="page1" value="1">
+                    <input type="button" id="page2" value="2">
+                    <input type="button" id="page3" value="3">
+                    <input type="button" id="page4" value="4">
+                </div>
+                <div class="content-wrapper">
+                    <div class="content">
+                        <input id="inp-name" type="text" name="fullName" placeholder="Name">
+                        <input id="inp-mail" type="text" name="email" placeholder="E-mail" >
+                    </div>
+                    <div class="content">
+                        <select id="country"></select>
+                        <select id="city"></select>
+                    </div>
+                    <div class="content">
+                        <input type="checkbox" class="check-social"> Facebook <input class="link-input" type="text" name="fb" placeholder="Facebook link"><br>
+                        <input type="checkbox" class="check-social"> Twitter <input class="link-input" type="text" name="tw" placeholder="Twitter link"><br>
+                        <input type="checkbox" class="check-social"> VK <input class="link-input" type="text" name="vk" placeholder="VK link"><br>
+                        <input type="checkbox" class="check-social"> Odnoklassniki <input class="link-input" type="text" name="ok" placeholder="Odnoklassniki link">
+                    </div>
+                    <div class="content">
+                        <img class="cat" src="img/cat1.jpg" alt="cat">
+                        <img class="cat" src="img/cat2.jpg" alt="cat">
+                        <img class="cat" src="img/cat3.jpg" alt="cat">
+                        <img class="dog" src="img/dog4.jpg" alt="dog">
+                    </div>
+                </div>
+                <div class="navigation">
+                    <input type="button" id="prev" value="Prev">
+                    <input type="button" id="next" value="Next">
+                </div>
             </div>
-            <div class="content-wrapper">
-                <div class="content">
-                    <input id="inp-name" type="text" name="fullName" placeholder="Name">
-                    <input id="inp-mail" type="text" name="email" placeholder="E-mail" >
-                </div>
-                <div class="content">
-                    <select id="country"></select>
-                    <select id="city"></select>
-                </div>
-                <div class="content">
-                    <input type="checkbox" class="check-social"> Facebook <input class="link-input" type="text" name="fb" placeholder="Facebook link"><br>
-                    <input type="checkbox" class="check-social"> Twitter <input class="link-input" type="text" name="tw" placeholder="Twitter link"><br>
-                    <input type="checkbox" class="check-social"> VK <input class="link-input" type="text" name="vk" placeholder="VK link"><br>
-                    <input type="checkbox" class="check-social"> Odnoklassniki <input class="link-input" type="text" name="ok" placeholder="Odnoklassniki link">
-                </div>
-                <div class="content"></div>
-            </div>
-            <div class="navigation">
-                <input type="button" id="prev" value="Prev">
-                <input type="button" id="next" value="Next">
+            <div class="results">
+
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -105,6 +123,18 @@
 
             $('.check-social').click(function() {
                 $(this).next().toggleClass('link-input');
+            });
+
+            $('.cat').click(function() {
+                $('.active').removeClass('active');
+                $(this).addClass('active');
+                alert('Yes!');
+            });
+
+            $('.dog').click(function() {
+                $('.active').removeClass('active');
+                $(this).addClass('active');
+                alert('No!');
             });
 
             for (var i = 1; i <= 4; i++) {
