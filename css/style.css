@@ -16,14 +16,20 @@ body {
     margin: auto;
 }
 
-.content {
+.content-wrapper {
+    margin-top: 20px;
+}
+
+.content, .pages, .navigation, .results {
     width: 400px;
+    text-align: center;
 }
 
 input[type='text'],
 select {
     width: 200px;
     padding: 5px;
+    margin: 10px;
 }
 
 .check-social {
@@ -32,6 +38,7 @@ select {
 
 .check-social + input[type='text'] {
     float: right;
+    margin-top: -7px;
 }
 
 .link-input {
@@ -45,7 +52,7 @@ img {
 }
 
 .active {
-    border: 5px solid orange;
+    border: 5px solid orangered;
 }
 
 .input-error {
@@ -78,11 +85,23 @@ img {
 }
 
 .curr {
-    border: 2px solid rgba(207, 0, 0, 0.94);
+    border: 2px solid orangered;
 }
 
 .left {
     float: left;
+    text-align: left;
+    font-size: 14px;
+}
+
+.left p {
+    margin: 5px;
+}
+
+.res-social {
+    margin-top: 15px;
+    font-size: 12px;
+    font-style: italic;
 }
 
 .right {
@@ -91,4 +110,34 @@ img {
 
 .clear {
     clear: both;
+}
+
+#next {
+    position: absolute;
+}
+
+.navigation input,
+#start {
+    width: 100px;
+    padding: 5px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: orangered;
+}
+
+.pages input {
+    padding: 5px;
+    width: 29px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: orangered;
+}
+
+#end {
+    background-color: orangered;
+    color: #ffffff;
+}
+
+#prev {
+    color: #aaaaaa;
 }

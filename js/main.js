@@ -100,6 +100,9 @@ $('#prev').click(function () {
             $currpt.removeClass('curr');
             $prevpt.addClass('curr');
         }
+        if ($('.sel').prev().length == 0) {
+            $('#prev').css('color', '#aaaaaa');
+        }
     } else {
         if ($('#inp-name').val().length == 0) {
             $('#inp-name').addClass('input-error');
@@ -114,6 +117,7 @@ $('#prev').click(function () {
 $('#next').click(function () {
     var btn = this;
     $('#inp-name, #inp-mail').removeClass('input-error');
+    $('#prev').css('color', 'orangered');
     if (validate()) {
         var $curr = $('.content.sel');
         var $next = $curr.next();
@@ -186,6 +190,7 @@ $('#end').click(function() {
             $('.right, .clear').remove();
             $('.res-social').empty();
             $('.check-social + input:text:not(.link-input)').toggleClass('link-input');
+            $('#prev').css('color', '#aaaaaa');
         });
     }
 });
