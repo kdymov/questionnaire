@@ -32,11 +32,11 @@ function validate() {
     // mail validate
     var mail = document.getElementById('inp-mail').value;
     var parts = mail.split('@');
-    if (parts.length != 2) {
+    if (parts.length != 2 || parts[0].length == 0) {
         return 0;
     } else {
         var dot = parts[1].split('.');
-        return dot.length == 2;
+        return (dot.length == 2 && dot[0].length > 0 && dot[1].length > 0);
     }
 }
 
@@ -187,7 +187,8 @@ $('#end').click(function() {
             $('input:text').val('');
             $('input:checkbox').removeAttr("checked");
             $('.active').removeClass('active');
-            $('.right, .clear').remove();
+            $('.right').remove();
+            $('.results .clear').remove();
             $('.res-social').empty();
             $('.check-social + input:text:not(.link-input)').toggleClass('link-input');
             $('#prev').css('color', '#aaaaaa');
@@ -211,4 +212,45 @@ $('.dog').click(function() {
     $(this).addClass('active');
     $('#pic').text('Вы выбрали собачку. А надо котика');
     validPicture = false;
+});
+
+$('.page').click(function() {
+    $('#inp-name, #inp-mail').removeClass('input-error');
+    $('#firstpg').text('');
+    if (validate()) {
+        var number = $(this).val();
+        $('.sel').removeClass('sel');
+        $('.curr').removeClass('curr');
+        $(this).addClass('curr');
+        $('#prev').css('color', 'orangered');
+        $('#next').css('visibility', 'visible');
+        $('#end').css('visibility', 'hidden');
+        switch (number) {
+            case '1':
+                $('#pg1').addClass('sel');
+                $('#prev').css('color', '#aaaaaa');
+                break;
+            case '2':
+                $('#pg2').addClass('sel');
+                break;
+            case '3':
+                $('#pg3').addClass('sel');
+                break;
+            case '4':
+                $('#pg4').addClass('sel');
+                $('#next').css('visibility', 'hidden');
+                $('#end').css('visibility', 'visible');
+                break;
+        }
+    } else {
+        if ($('#inp-name').val().length == 0) {
+            $('#inp-name').addClass('input-error');
+            $('#firstpg').text('Введите ваше имя');
+        } else if (!social) {
+            $('#socialpg').text('Введите ссылку');
+        } else {
+            $('#inp-mail').addClass('input-error');
+            $('#firstpg').text('Формат адреса электронной почты неправильный');
+        }
+    }
 });
