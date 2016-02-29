@@ -7,6 +7,7 @@ function validate() {
         return 0;
     }
     // social validate
+    $('#firstpg').text('');
     $('.fb, .tw, .vk, .ok').removeClass('input-error');
     social = true;
     $('#socialpg').text('');
