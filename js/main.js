@@ -7,7 +7,11 @@ function validate() {
         return 0;
     }
     // social validate
+<<<<<<< HEAD
 
+=======
+    $('#firstpg').text('');
+>>>>>>> origin/gh-pages
     $('.fb, .tw, .vk, .ok').removeClass('input-error');
     social = true;
     $('#firstpg').text('');
@@ -46,7 +50,7 @@ var validPicture = false;
 
 $(document).ready(function() {
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         dataType: 'json',
         url: 'json/countries.json',
         success: function(response) {
@@ -56,7 +60,7 @@ $(document).ready(function() {
         }
     });
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         dataType: 'json',
         url: 'json/cities.json',
         success: function(response) {
@@ -72,7 +76,7 @@ $(document).ready(function() {
 
 $('#country').change(function() {
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         dataType: 'json',
         url: 'json/cities.json',
         success: function(response) {
