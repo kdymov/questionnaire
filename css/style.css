@@ -26,14 +26,24 @@ input {
     margin-top: 20px;
 }
 
-.content, .pages, .navigation, .results {
+.content, .pages, .navigation {
     width: 700px;
+    text-align: center;
+}
+
+.results {
+    margin: auto;
+    width: 400px;
     text-align: center;
 }
 
 .social {
     margin: auto;
     width: 400px;
+}
+
+.soc-info {
+    color: darkblue;
 }
 
 input[type='text'],
@@ -110,13 +120,18 @@ img {
 }
 
 .res-social {
-    margin-top: 15px;
+    margin-top: 35px;
     font-size: 12px;
-    font-style: italic;
 }
 
 .right {
     float: right;
+}
+
+.right img {
+    border: 5px solid white;
+    width: 200px;
+    height: 195px;
 }
 
 .clear {
@@ -125,6 +140,11 @@ img {
 
 #next {
     position: absolute;
+}
+
+.start-btn {
+    margin-top: 32px;
+    text-align: center;
 }
 
 .navigation input,
@@ -144,7 +164,7 @@ img {
     color: #ff9800;
 }
 
-#end {
+#end, #start {
     background-color: #ff9800;
     color: #ffffff;
 }
@@ -169,7 +189,7 @@ img {
     .content, .pages, .navigation, .results {
         width: 400px;
     }
-    
+
     .navigation {
         margin-top: 400px;
     }
