@@ -1,12 +1,45 @@
+@media (max-width: 480px) {
+    body {
+        width: 400px;
+    }
+
+    .wrapper {
+        width: 400px;
+    }
+
+    .content, .pages, .navigation, .results {
+        width: 400px;
+    }
+}
+
+@media (min-width: 481px) {
+    body {
+        width: 100%;
+    }
+
+    .wrapper {
+        width: 700px;
+    }
+
+    .content, .pages, .navigation, .results {
+        width: 700px;
+    }
+}
+
 body {
-    background-color: rgba(190, 190, 190, 1);
+    background-color: #f5f5f5;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+}
+
+input {
+    border: white 1px solid;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .wrapper {
-    background-color: #dddddd;
     padding: 30px;
     border-radius: 10px;
-    width: 400px;
     height: 450px;
     margin: auto;
 }
@@ -21,15 +54,19 @@ body {
 }
 
 .content, .pages, .navigation, .results {
-    width: 400px;
     text-align: center;
+}
+
+.social {
+    margin: auto;
+    width: 400px;
 }
 
 input[type='text'],
 select {
     width: 200px;
     padding: 5px;
-    margin: 10px;
+    margin: 8px;
 }
 
 .check-social {
@@ -48,11 +85,11 @@ select {
 img {
     width: 150px;
     height: 150px;
-    border: 5px solid #dddddd;
+    border: 5px solid #f5f5f5;
 }
 
 .active {
-    border: 5px solid orangered;
+    border: 5px solid #ff9800;
 }
 
 .input-error {
@@ -65,7 +102,7 @@ img {
 }
 
 .navigation {
-    margin-top: 400px;
+    margin-top: 265px;
 }
 
 .content:not(.sel) {
@@ -85,7 +122,7 @@ img {
 }
 
 .curr {
-    border: 2px solid orangered;
+    border: 2px solid #ff9800;
 }
 
 .left {
@@ -122,7 +159,7 @@ img {
     padding: 5px;
     background-color: #ffffff;
     border-radius: 5px;
-    color: orangered;
+    color: #ff9800;
 }
 
 .pages input {
@@ -130,14 +167,18 @@ img {
     width: 29px;
     border-radius: 5px;
     background-color: #ffffff;
-    color: orangered;
+    color: #ff9800;
 }
 
 #end {
-    background-color: orangered;
+    background-color: #ff9800;
     color: #ffffff;
 }
 
 #prev {
     color: #aaaaaa;
+}
+
+#next, #prev, #end {
+    margin: 0 8px;
 }
