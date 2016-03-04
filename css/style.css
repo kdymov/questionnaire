@@ -177,6 +177,24 @@ img {
     margin: 0 8px;
 }
 
+@media screen and (max-width: 600px), screen and (max-device-width: 600px) {
+    body {
+        width: 500px;
+    }
+
+    .wrapper {
+        width: 500px;
+    }
+
+    .content, .pages, .navigation, .results {
+        width: 500px;
+    }
+
+    .navigation {
+        margin-top: 500px;
+    }
+}
+
 @media screen and (max-width: 480px), screen and (max-device-width: 480px) {
     body {
         width: 400px;
