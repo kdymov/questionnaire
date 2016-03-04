@@ -7,8 +7,10 @@ function validate() {
         return 0;
     }
     // social validate
+
     $('.fb, .tw, .vk, .ok').removeClass('input-error');
     social = true;
+    $('#firstpg').text('');
     $('#socialpg').text('');
     if ($('#fb').is(':checked') && $('#fb').next().val().length == 0){
         $('#fb').next().addClass('input-error');
@@ -117,7 +119,7 @@ $('#prev').click(function () {
 $('#next').click(function () {
     var btn = this;
     $('#inp-name, #inp-mail').removeClass('input-error');
-    $('#prev').css('color', 'orangered');
+    $('#prev').css('color', '#ff9800');
     if (validate()) {
         var $curr = $('.content.sel');
         var $next = $curr.next();
@@ -222,7 +224,7 @@ $('.page').click(function() {
         $('.sel').removeClass('sel');
         $('.curr').removeClass('curr');
         $(this).addClass('curr');
-        $('#prev').css('color', 'orangered');
+        $('#prev').css('color', '#ff9800');
         $('#next').css('visibility', 'visible');
         $('#end').css('visibility', 'hidden');
         switch (number) {
