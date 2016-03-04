@@ -1,18 +1,4 @@
-@media (max-width: 600px) {
-    body {
-        width: 100%;
-    }
-
-    .wrapper {
-        width: 500px;
-    }
-
-    .content, .pages, .navigation, .results {
-        width: 500px;
-    }
-}
-
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     body {
         width: 400px;
     }
@@ -26,7 +12,7 @@
     }
 }
 
-@media (min-width: 601px) {
+@media screen and (min-width: 481px) {
     body {
         width: 100%;
     }
