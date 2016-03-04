@@ -1,69 +1,68 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Анкета</title>
-        <link href="css/style.css" type="text/css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="wrapper">
-            <div class="questionnaire">
-                <div class="pages">
-                    <input type="button" class="page curr" value="1">
-                    <input type="button" class="page" value="2">
-                    <input type="button" class="page" value="3">
-                    <input type="button" class="page" value="4">
-                </div>
-                <div class="content-wrapper">
-                    <div class="content sel" id="pg1">
-                        <input id="inp-name" type="text" name="fullName" placeholder="Name"><br>
-                        <input id="inp-mail" type="text" name="email" placeholder="E-mail"><br>
-                        <p class="error" id="firstpg"></p>
-                    </div>
-                    <div class="content" id="pg2">
-                        <select id="country"></select><br>
-                        <select id="city"></select>
-                    </div>
-                    <div class="content" id="pg3">
-                        <div class="social">
-                            <input type="checkbox" class="check-social" id="fb"> Facebook <input class="link-input fb" type="text" name="fb" placeholder="Facebook link"><br>
-                            <div class="clear"></div>
-                            <input type="checkbox" class="check-social" id="tw"> Twitter <input class="link-input tw" type="text" name="tw" placeholder="Twitter link"><br>
-                            <div class="clear"></div>
-                            <input type="checkbox" class="check-social" id="vk"> VK <input class="link-input vk" type="text" name="vk" placeholder="VK link"><br>
-                            <div class="clear"></div>
-                            <input type="checkbox" class="check-social" id="ok"> Odnoklassniki <input class="link-input ok" type="text" name="ok" placeholder="Odnoklassniki link">
-                            <div class="clear"></div>
-                            <p class="error" id="socialpg"></p>
-                        </div>
-                    </div>
-                    <div class="content" id="pg4">
-                        <img id="pic1" class="cat" src="img/cat1.jpg" alt="cat">
-                        <img id="pic2" class="cat" src="img/cat2.jpg" alt="cat">
-                        <img id="pic3" class="cat" src="img/cat3.jpg" alt="cat">
-                        <img id="pic4" class="dog" src="img/dog4.jpg" alt="dog">
-                        <p id="pic" class="error"></p>
-                    </div>
-                </div>
-                <div class="navigation">
-                    <input type="button" id="prev" value="Prev">
-                    <input type="button" id="next" value="Next">
-                    <input type="button" id="end" value="End">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Анкета</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+    <div class="questionnaire">
+        <div class="pages">
+            <input type="button" class="page curr" value="1">
+            <input type="button" class="page" value="2">
+            <input type="button" class="page" value="3">
+            <input type="button" class="page" value="4">
+        </div>
+        <div class="content-wrapper">
+            <div class="content sel" id="pg1">
+                <input id="inp-name" type="text" name="fullName" placeholder="Name"><br>
+                <input id="inp-mail" type="text" name="email" placeholder="E-mail"><br>
+                <p class="error" id="firstpg"></p>
+            </div>
+            <div class="content" id="pg2">
+                <select id="country"></select><br>
+                <select id="city"></select>
+            </div>
+            <div class="content" id="pg3">
+                <div class="social">
+                    <input type="checkbox" class="check-social" id="fb"> Facebook <input class="link-input fb" type="text" name="fb" placeholder="Facebook link"><br>
+                    <div class="clear"></div>
+                    <input type="checkbox" class="check-social" id="tw"> Twitter <input class="link-input tw" type="text" name="tw" placeholder="Twitter link"><br>
+                    <div class="clear"></div>
+                    <input type="checkbox" class="check-social" id="vk"> VK <input class="link-input vk" type="text" name="vk" placeholder="VK link"><br>
+                    <div class="clear"></div>
+                    <input type="checkbox" class="check-social" id="ok"> Odnoklassniki <input class="link-input ok" type="text" name="ok" placeholder="Odnoklassniki link">
+                    <div class="clear"></div>
+                    <p class="error" id="socialpg"></p>
                 </div>
             </div>
-            <div class="results">
-                <div class="left">
-                    <p id="res-name"></p>
-                    <p id="res-mail"></p>
-                    <p id="res-country"></p>
-                    <p id="res-city"></p>
-                    <div class="res-social">
-                    </div>
-                </div>
+            <div class="content" id="pg4">
+                <img id="pic1" class="cat" src="img/cat1.jpg" alt="cat">
+                <img id="pic2" class="cat" src="img/cat2.jpg" alt="cat">
+                <img id="pic3" class="cat" src="img/cat3.jpg" alt="cat">
+                <img id="pic4" class="dog" src="img/dog4.jpg" alt="dog">
+                <p id="pic" class="error"></p>
             </div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-        <script src="js/main.js"></script>
-    </body>
+        <div class="navigation">
+            <input type="button" id="prev" value="Prev">
+            <input type="button" id="next" value="Next">
+            <input type="button" id="end" value="End">
+        </div>
+    </div>
+    <div class="results">
+        <div class="left">
+            <p id="res-name" style="font-size: 20px"></p>
+            <p id="res-mail" style="font-size: 15px; margin-top: 30px"></p>
+            <p id="res-country" style="font-size: 15px"></p>
+            <div class="res-social">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="js/main.js"></script>
+</body>
 </html>
