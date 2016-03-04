@@ -46,7 +46,7 @@ var validPicture = false;
 
 $(document).ready(function() {
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         dataType: 'json',
         url: 'json/countries.json',
         success: function(response) {
@@ -56,7 +56,7 @@ $(document).ready(function() {
         }
     });
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         dataType: 'json',
         url: 'json/cities.json',
         success: function(response) {
@@ -72,7 +72,7 @@ $(document).ready(function() {
 
 $('#country').change(function() {
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         dataType: 'json',
         url: 'json/cities.json',
         success: function(response) {
@@ -158,14 +158,16 @@ $('#end').click(function() {
         $('.questionnaire').css('visibility', 'hidden').height(0);
         $(this).css('visibility', 'hidden');
         $('.results').css('visibility', 'visible');
-        $('#res-name').text('Name: ' + $('#inp-name').val());
-        $('#res-mail').text('E-mail: ' + $('#inp-mail').val());
-        $('#res-country').text('Country: ' + $('#country').find('option:selected').text());
-        $('#res-city').text('City: ' + $('#city').find('option:selected').text());
+        $('.results').css('background-color', '#ffffff');
+        $('.results').css('box-shadow', '0 1px 2px rgba(0, 0, 0, 0.2)');
+        $('.results').css('padding', '10px');
+        $('#res-name').text($('#inp-name').val());
+        $('#res-mail').text($('#inp-mail').val());
+        $('#res-country').text($('#city').find('option:selected').text() + ", " + $('#country').find('option:selected').text());
         $('.check-social').each(function() {
             var $inp = $(this).next();
             if ($inp.val().length != 0) {
-                $('.res-social').append('<p>' + social[i] + $inp.val() + '</p>');
+                $('.res-social').append('<p class="soc-info">' + social[i] + $inp.val() + '</p>');
             }
             i++;
         });
@@ -176,7 +178,8 @@ $('#end').click(function() {
         } else if ($('#pic3').hasClass('active')) {
             $('.results').append('<div class="right"><img src="img/cat3.jpg" alt="cat"></div>');
         }
-        $('.results').append('<div class="clear"><input type="button" value="Пройти заново" id="start"></div>');
+        $('.results').append('<div class="clear"></div>');
+        $('.results').parent().append('<div class="start-btn"><input type="button" value="Пройти заново" id="start"></div>');
         $('#start').click(function() {
             $('.results').css('visibility', 'hidden');
             $('.questionnaire').css('visibility', 'visible');
@@ -191,6 +194,7 @@ $('#end').click(function() {
             $('.active').removeClass('active');
             $('.right').remove();
             $('.results .clear').remove();
+            $('.start-btn').remove();
             $('.res-social').empty();
             $('.check-social + input:text:not(.link-input)').toggleClass('link-input');
             $('#prev').css('color', '#aaaaaa');
