@@ -23,7 +23,7 @@ input {
 }
 
 .content-wrapper {
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .content, .pages, .navigation {
@@ -33,7 +33,7 @@ input {
 
 .results {
     margin: auto;
-    width: 400px;
+    width: 500px;
     text-align: center;
 }
 
@@ -45,21 +45,41 @@ input {
 .soc-info {
     color: darkblue;
 }
+#socialpg {
+    margin-top: -7px;
+}
 
 input[type='text'],
 select {
-    width: 200px;
-    padding: 5px;
+    padding: 10px;
     margin: 8px;
+    border-radius: 2px;
+}
+
+input[type='text'] {
+    width: 250px;
+}
+
+select {
+    width: 272px;
 }
 
 .check-social {
     float: left;
 }
 
-.check-social + input[type='text'] {
+label + input[type='text'] {
     float: right;
     margin-top: -7px;
+    width: 200px;
+}
+
+.splitter {
+    height: 8px;
+}
+
+.empty {
+    height: 80px;
 }
 
 .link-input {
@@ -86,7 +106,7 @@ img {
 }
 
 .navigation {
-    margin-top: 265px;
+    margin-top: 275px;
 }
 
 .content:not(.sel) {
@@ -95,6 +115,7 @@ img {
 
 .results {
     visibility: hidden;
+    padding: 24px;
 }
 
 #end {
@@ -103,10 +124,6 @@ img {
 
 .error{
     color: rgba(207, 0, 0, 0.94);
-}
-
-.curr {
-    border: 2px solid #ff9800;
 }
 
 .left {
@@ -120,8 +137,13 @@ img {
 }
 
 .res-social {
-    margin-top: 35px;
+    margin-top: 30px;
     font-size: 12px;
+}
+
+.res-social p {
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 .right {
@@ -156,12 +178,19 @@ img {
     color: #ff9800;
 }
 
-.pages input {
-    padding: 5px;
-    width: 29px;
+.page {
+    padding: 8px 13px;
     border-radius: 5px;
     background-color: #ffffff;
+    color: #bbbbbb;
+}
+
+.activated {
     color: #ff9800;
+}
+
+.curr {
+    color: black;
 }
 
 #end, #start {
@@ -177,6 +206,102 @@ img {
     margin: 0 8px;
 }
 
+.page-title {
+    position: absolute;
+    margin-top: 16px;
+    font-size: 15px;
+    visibility: hidden;
+}
+
+.curr-title {
+    visibility: visible;
+}
+
+.page-container {
+    width: 272px;
+    text-align: left;
+    margin: auto;
+}
+
+#pic {
+    text-align: left;
+    padding-left: 27px;
+}
+
+#pg1, #pg2 {
+    margin-top: 20px;
+}
+
+#pg3 {
+    margin-top: 15px;
+}
+
+.err-first {
+    display: inline-block;
+    position: absolute;
+    width: 400px;
+    text-align: left;
+}
+
+.social {
+    text-align: left;
+}
+
+input[type="checkbox"] {
+    display:none;
+}
+
+label {
+    cursor: pointer;
+}
+
+input[type="checkbox"] + label span {
+    display:inline-block;
+    width:16px;
+    height:16px;
+    background: url(../img/social.png) no-repeat;
+    margin-right: 4px;
+}
+
+input[type="checkbox"]:checked + label span {
+    background:url(../img/social-check.png) no-repeat;
+}
+
+::-webkit-input-placeholder {color: #bbbbbb;} /* Opera, Chrome */
+::-moz-placeholder          {color: #bbbbbb;} /* Firefox 19+ */
+:-moz-placeholder           {color: #bbbbbb;} /* Firefox 18- */
+:-ms-input-placeholder      {color: #bbbbbb;} /* IE */
+
+@media screen and (max-width: 768px), screen and (max-device-width: 768px) {
+    body {
+        width: 700px;
+    }
+
+    .wrapper {
+        width: 700px;
+    }
+
+    .content, .pages, .navigation, .results {
+        width: 700px;
+    }
+
+    .navigation {
+        margin-top: 700px;
+    }
+
+    .empty {
+        height: 50px;
+    }
+
+    #pic {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    #pg1, #pg2, #pg3 {
+        margin-top: 0;
+    }
+}
 @media screen and (max-width: 600px), screen and (max-device-width: 600px) {
     body {
         width: 500px;
@@ -193,8 +318,20 @@ img {
     .navigation {
         margin-top: 500px;
     }
-}
 
+    .empty {
+        height: 40px;
+    }
+
+    #pic {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    #pg1, #pg2, #pg3 {
+        margin-top: 0;
+    }
+}
 @media screen and (max-width: 480px), screen and (max-device-width: 480px) {
     body {
         width: 400px;
@@ -210,5 +347,18 @@ img {
 
     .navigation {
         margin-top: 400px;
+    }
+
+    .empty {
+        height: 40px;
+    }
+
+    #pic {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    #pg1, #pg2, #pg3 {
+        margin-top: 0;
     }
 }

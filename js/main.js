@@ -10,22 +10,23 @@ function validate() {
 
     $('.fb, .tw, .vk, .ok').removeClass('input-error');
     social = true;
-    $('#firstpg').text('');
+    $('#firstpg-name').text('');
+    $('#firstpg-mail').text('');
     $('#socialpg').text('');
-    if ($('#fb').is(':checked') && $('#fb').next().val().length == 0){
-        $('#fb').next().addClass('input-error');
+    if ($('#fb').is(':checked') && $('#fb').next().next().val().length == 0){
+        $('#fb').next().next().addClass('input-error');
         social = false;
     }
-    if ($('#tw').is(':checked') && $('#tw').next().val().length == 0){
-        $('#tw').next().addClass('input-error');
+    if ($('#tw').is(':checked') && $('#tw').next().next().val().length == 0){
+        $('#tw').next().next().addClass('input-error');
         social = false;
     }
-    if ($('#vk').is(':checked') && $('#vk').next().val().length == 0){
-        $('#vk').next().addClass('input-error');
+    if ($('#vk').is(':checked') && $('#vk').next().next().val().length == 0){
+        $('#vk').next().next().addClass('input-error');
         social = false;
     }
-    if ($('#ok').is(':checked') && $('#ok').next().val().length == 0){
-        $('#ok').next().addClass('input-error');
+    if ($('#ok').is(':checked') && $('#ok').next().next().val().length == 0){
+        $('#ok').next().next().addClass('input-error');
         social = false;
     }
     if (!social) {
@@ -94,6 +95,8 @@ $('#prev').click(function () {
         var $prev = $curr.prev();
         var $currpt = $('.curr');
         var $prevpt = $currpt.prev();
+        var $currtx = $('.curr-title');
+        var $nexttx = $currtx.prev();
         $('#next').css('visibility', 'visible');
         $('#end').css('visibility', 'hidden');
         if ($prev.length != 0) {
@@ -101,6 +104,8 @@ $('#prev').click(function () {
             $prev.addClass('sel');
             $currpt.removeClass('curr');
             $prevpt.addClass('curr');
+            $currtx.removeClass('curr-title');
+            $nexttx.addClass('curr-title');
         }
         if ($('.sel').prev().length == 0) {
             $('#prev').css('color', '#aaaaaa');
@@ -108,10 +113,12 @@ $('#prev').click(function () {
     } else {
         if ($('#inp-name').val().length == 0) {
             $('#inp-name').addClass('input-error');
-            $('#firstpg').text('Введите ваше имя');
-        }  else {
+            $('#firstpg-name').text(' — введите ваше имя');
+        } else if (!social) {
+            $('#socialpg').text('Введите ссылку');
+        } else {
             $('#inp-mail').addClass('input-error');
-            $('#firstpg').text('Формат адреса электронной почты неправильный');
+            $('#firstpg-mail').text(' — формат адреса электронной почты неправильный');
         }
     }
 });
@@ -119,8 +126,8 @@ $('#prev').click(function () {
 $('#next').click(function () {
     var btn = this;
     $('#inp-name, #inp-mail').removeClass('input-error');
-    $('#prev').css('color', '#ff9800');
     if (validate()) {
+        $('#prev').css('color', '#ff9800');
         var $curr = $('.content.sel');
         var $next = $curr.next();
         $curr.removeClass('sel');
@@ -129,7 +136,13 @@ $('#next').click(function () {
         var $currpt = $('.curr');
         var $nextpt = $currpt.next();
         $currpt.removeClass('curr');
+        $nextpt.addClass('activated');
         $nextpt.addClass('curr');
+
+        var $currtx = $('.curr-title');
+        var $nexttx = $currtx.next();
+        $currtx.removeClass('curr-title');
+        $nexttx.addClass('curr-title');
 
         if ($('.sel+.content').length == 0) {
             $(btn).css('visibility', 'hidden');
@@ -138,12 +151,12 @@ $('#next').click(function () {
     } else {
         if ($('#inp-name').val().length == 0) {
             $('#inp-name').addClass('input-error');
-            $('#firstpg').text('Введите ваше имя');
+            $('#firstpg-name').text(' — введите ваше имя');
         } else if (!social) {
             $('#socialpg').text('Введите ссылку');
         } else {
             $('#inp-mail').addClass('input-error');
-            $('#firstpg').text('Формат адреса электронной почты неправильный');
+            $('#firstpg-mail').text(' — формат адреса электронной почты неправильный');
         }
     }
 });
@@ -152,6 +165,8 @@ $('#end').click(function() {
     if (validPicture) {
         var $currpt = $('.curr');
         $currpt.removeClass('curr');
+        var $currtx = $('.curr-title');
+        $currtx.removeClass('curr-title');
         var social = ['Facebook: ', 'Twitter: ', 'VK: ', 'Odnoklassniki: '];
         var i = 0;
 
@@ -165,9 +180,9 @@ $('#end').click(function() {
         $('#res-mail').text($('#inp-mail').val());
         $('#res-country').text($('#city').find('option:selected').text() + ", " + $('#country').find('option:selected').text());
         $('.check-social').each(function() {
-            var $inp = $(this).next();
+            var $inp = $(this).next().next();
             if ($inp.val().length != 0) {
-                $('.res-social').append('<p class="soc-info">' + social[i] + $inp.val() + '</p>');
+                $('.res-social').append('<p><span class="soc-info">' + social[i] + '</span>' +  $inp.val() + '</p>');
             }
             i++;
         });
@@ -185,10 +200,15 @@ $('#end').click(function() {
             $('.questionnaire').css('visibility', 'visible');
             $('#next').css('visibility', 'visible');
             var $first = $('.content').first();
+            var $firsttx = $('.page-title').first();
             $('.sel').removeClass('sel');
+            $('.curr-title').removeClass('curr-title');
             $first.addClass('sel');
+            $firsttx.addClass('curr-title');
             $('.curr').removeClass('curr');
-            $('.pages > input').first().addClass('curr');
+            $('.page').first().addClass('curr');
+            $('.activated').removeClass('activated');
+            $('.page').first().addClass('activated');
             $('input:text').val('');
             $('input:checkbox').removeAttr("checked");
             $('.active').removeClass('active');
@@ -196,14 +216,15 @@ $('#end').click(function() {
             $('.results .clear').remove();
             $('.start-btn').remove();
             $('.res-social').empty();
-            $('.check-social + input:text:not(.link-input)').toggleClass('link-input');
+            $('label + input:text:not(.link-input)').toggleClass('link-input');
             $('#prev').css('color', '#aaaaaa');
+            validPicture = false;
         });
     }
 });
 
 $('.check-social').click(function() {
-    $(this).next().toggleClass('link-input');
+    $(this).next().next().toggleClass('link-input');
 });
 
 $('.cat').click(function() {
@@ -221,42 +242,50 @@ $('.dog').click(function() {
 });
 
 $('.page').click(function() {
-    $('#inp-name, #inp-mail').removeClass('input-error');
-    $('#firstpg').text('');
-    if (validate()) {
-        var number = $(this).val();
-        $('.sel').removeClass('sel');
-        $('.curr').removeClass('curr');
-        $(this).addClass('curr');
-        $('#prev').css('color', '#ff9800');
-        $('#next').css('visibility', 'visible');
-        $('#end').css('visibility', 'hidden');
-        switch (number) {
-            case '1':
-                $('#pg1').addClass('sel');
-                $('#prev').css('color', '#aaaaaa');
-                break;
-            case '2':
-                $('#pg2').addClass('sel');
-                break;
-            case '3':
-                $('#pg3').addClass('sel');
-                break;
-            case '4':
-                $('#pg4').addClass('sel');
-                $('#next').css('visibility', 'hidden');
-                $('#end').css('visibility', 'visible');
-                break;
-        }
-    } else {
-        if ($('#inp-name').val().length == 0) {
-            $('#inp-name').addClass('input-error');
-            $('#firstpg').text('Введите ваше имя');
-        } else if (!social) {
-            $('#socialpg').text('Введите ссылку');
+    if ($(this).hasClass('activated')) {
+        $('#inp-name, #inp-mail').removeClass('input-error');
+        $('#firstpg-name').text('');
+        $('#firstpg-mail').text('');
+        if (validate()) {
+            var number = $(this).val();
+            $('.sel').removeClass('sel');
+            $('.curr').removeClass('curr');
+            $('.curr-title').removeClass('curr-title');
+            $(this).addClass('curr');
+            $('#prev').css('color', '#ff9800');
+            $('#next').css('visibility', 'visible');
+            $('#end').css('visibility', 'hidden');
+            switch (number) {
+                case '1':
+                    $('#pg1').addClass('sel');
+                    $('#title1').addClass('curr-title');
+                    $('#prev').css('color', '#aaaaaa');
+                    break;
+                case '2':
+                    $('#pg2').addClass('sel');
+                    $('#title2').addClass('curr-title');
+                    break;
+                case '3':
+                    $('#pg3').addClass('sel');
+                    $('#title3').addClass('curr-title');
+                    break;
+                case '4':
+                    $('#pg4').addClass('sel');
+                    $('#title4').addClass('curr-title');
+                    $('#next').css('visibility', 'hidden');
+                    $('#end').css('visibility', 'visible');
+                    break;
+            }
         } else {
-            $('#inp-mail').addClass('input-error');
-            $('#firstpg').text('Формат адреса электронной почты неправильный');
+            if ($('#inp-name').val().length == 0) {
+                $('#inp-name').addClass('input-error');
+                $('#firstpg-name').text(' — введите ваше имя');
+            } else if (!social) {
+                $('#socialpg').text('Введите ссылку');
+            } else {
+                $('#inp-mail').addClass('input-error');
+                $('#firstpg-mail').text(' — формат адреса электронной почты неправильный');
+            }
         }
     }
 });
