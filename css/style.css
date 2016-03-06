@@ -314,23 +314,23 @@ input[type="checkbox"]:checked + label span {
 }
 @media screen and (max-width: 600px), screen and (max-device-width: 600px) {
     body {
-        width: 500px;
+        width: 600px;
     }
 
     .wrapper {
-        width: 500px;
+        width: 400px;
     }
 
     .content, .pages, .navigation, .results {
-        width: 500px;
+        width: 400px;
     }
 
     .navigation {
-        margin-top: 500px;
+        margin-top: 400px;
     }
 
     .empty {
-        height: 40px;
+        height: 100px;
     }
 
     #pic {
