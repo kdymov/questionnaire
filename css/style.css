@@ -301,6 +301,16 @@ input[type="checkbox"]:checked + label span {
     #pg1, #pg2, #pg3 {
         margin-top: 0;
     }
+
+    #firstpg-name,
+    #firstpg-mail {
+        visibility: hidden;
+        width: 0;
+    }
+
+    .page-title {
+        font-size: 12px;
+    }
 }
 @media screen and (max-width: 600px), screen and (max-device-width: 600px) {
     body {
@@ -331,6 +341,16 @@ input[type="checkbox"]:checked + label span {
     #pg1, #pg2, #pg3 {
         margin-top: 0;
     }
+
+    #firstpg-name,
+    #firstpg-mail {
+        visibility: hidden;
+        width: 0;
+    }
+
+    .page-title {
+        font-size: 12px;
+    }
 }
 @media screen and (max-width: 480px), screen and (max-device-width: 480px) {
     body {
@@ -360,5 +380,15 @@ input[type="checkbox"]:checked + label span {
 
     #pg1, #pg2, #pg3 {
         margin-top: 0;
+    }
+
+    #firstpg-name,
+    #firstpg-mail {
+        visibility: hidden;
+        width: 0;
+    }
+
+    .page-title {
+        font-size: 12px;
     }
 }
